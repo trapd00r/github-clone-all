@@ -1,0 +1,14 @@
+#!/bin/sh
+# abstract: clone all github repos from GITHUB_USER
+
+    CNTX='users';
+    NAME=$GITHUB_USER
+# a maximum of 100 repos per page
+END_PAGE=3
+
+for PAGE in {1..$END_PAGE}; do
+  curl -s "https://api.github.com/$CNTX/$NAME/repos?page=$PAGE&per_page=100" |
+    grep -e 'git_url*' |
+    cut -d \" -f 4     |
+    xargs -L1 git clone
+done

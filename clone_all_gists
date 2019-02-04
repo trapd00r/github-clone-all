@@ -1,0 +1,12 @@
+#!/bin/sh
+# abstract: clone all gists from GITHUB_USER
+
+NAME=$GITHUB_USER
+
+for gist in $( \
+  curl -s https://api.github.com/users/$NAME/gists \
+    | grep git_pull_url \
+    | grep -Po 'https:.+[.]git'
+); do
+  git clone $gist
+done
