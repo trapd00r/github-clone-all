@@ -1,4 +1,4 @@
-github-clone-all
+[github-clone-all](http://japh.se/2019/02/04/clone_all_github_repos_and_gists_in_one_go.html)
 ----------------
 
 export GITHUB_USER in your shell environment.
